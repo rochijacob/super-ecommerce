@@ -10,6 +10,7 @@ const FormInput = ({ name, label, required }) => {
     <Grid item xs={12} sm={6}>
       <Controller
         name={name}
+        defaultValue=""
         render={({ field }) => (
           <TextField fullWidth label={label} required={required} />
         )}
