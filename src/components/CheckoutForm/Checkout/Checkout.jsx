@@ -88,7 +88,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           <Divider className={classes.divider} />
         </div>
         <br />
-        <Button component={Link} to="/" variant="outrlined" type="button">
+        <Button component={Link} to="/" variant="outlined" type="button">
           Back to Home
         </Button>
       </>
@@ -102,7 +102,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     <>
       <Typography variant="h5">Error: {error}</Typography>
       <br />
-      <Button component={Link} to="/" variant="outrlined" type="button">
+      <Button component={Link} to="/" variant="outlined" type="button">
         Back to Home
       </Button>
     </>;
