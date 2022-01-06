@@ -27,6 +27,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [shippingData, setShippingData] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
   const [checkoutToken, setCheckoutToken] = useState(null);
 
   //When someone enters the checkout process generate a checkout token
@@ -56,6 +57,12 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     nextStep();
   };
 
+  const timeout = () => {
+    setTimeout(() => {
+      setIsFinished(true);
+    }, 3000);
+  };
+
   let Confirmation = () =>
     order.customer ? (
       <>
@@ -68,6 +75,17 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           <Typography variant="subtitle2">
             Order ref : {order.customer_reference}
           </Typography>
+        </div>
+        <br />
+        <Button component={Link} to="/" variant="outrlined" type="button">
+          Back to Home
+        </Button>
+      </>
+    ) : isFinished ? (
+      <>
+        <div>
+          <Typography variant="h5">Thank you for your purchase</Typography>
+          <Divider className={classes.divider} />
         </div>
         <br />
         <Button component={Link} to="/" variant="outrlined" type="button">
@@ -100,6 +118,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         nextStep={nextStep}
         backStep={backStep}
         onCaptureCheckout={onCaptureCheckout}
+        timeout={timeout}
       />
     );
 
