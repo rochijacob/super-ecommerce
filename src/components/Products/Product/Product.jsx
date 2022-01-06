@@ -1,12 +1,12 @@
 import React from 'react'
+//UI Components
 import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core'
 import { AddShoppingCart } from '@material-ui/icons';
-
+//Styles
 import useStyles from './productStyles'
 
-export const Product = ({product}) => {
+export const Product = ({product, onAddToCart}) => {
     const classes = useStyles();
-    console.log(product)
     return (
         <Card className={classes.root}>
             <CardMedia className={classes.media} image={product.image.url} title={product.name} />
@@ -22,7 +22,7 @@ export const Product = ({product}) => {
                 <Typography dangerouslySetInnerHTML={{__html: product.description}} variant='body2' color='textSecondary' />
             </CardContent>
             <CardActions disableSpacing className={classes.cardActions}>
-                <IconButton aria-label='Add to Cart'>
+                <IconButton aria-label='Add to Cart' onClick={onAddToCart}>
                     <AddShoppingCart />
                 </IconButton>
             </CardActions>
